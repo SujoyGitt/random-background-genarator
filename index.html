@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Linear Gradient Generator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Placeholder preview area styling */
+    .gradient-box {
+      height: 250px;
+      background-image: linear-gradient(to right, #ff7e5f, #feb47b);
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+  <div class="max-w-2xl mx-auto p-6">
+    <h1 class="text-3xl font-bold text-center mb-8">🎨 Random Gradient Generator</h1>
+
+    <!-- Gradient Preview Box -->
+    <div class="gradient-box rounded-lg shadow-lg mb-6 flex items-center justify-center text-white text-lg font-semibold">
+      Gradient Preview
+    </div>
+
+    <!-- CSS Output -->
+    <div class="bg-white rounded shadow p-4 mb-6">
+      <p class="text-sm text-gray-600 mb-2">Generated CSS:</p>
+      <pre class="bg-gray-100 p-3 rounded text-sm overflow-auto font-mono">background-image: linear-gradient(to right, #ff7e5f, #feb47b);</pre>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="flex justify-center gap-4">
+      <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded generateBtn">
+        Generate
+      </button>
+      <button class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded copyBtn">
+        Copy CSS
+      </button>
+    </div>
+  </div>
+
+  <script>
+    let getElement =(elem)=>document.querySelector(elem);
+    let generateBtn  = getElement('.generateBtn');
+    let copyBtn  = getElement('.copyBtn');
+    let box  = getElement('.gradient-box');
+
+    let generateColor = ()=>{
+      let colorStr = "0123456789abcdef";
+      let colorCode1 = "#";
+      let colorCode2 = "#";
+    
+      let direction = Math.floor(Math.random() * 360);
+
+      for (let i = 0; i < 6; i++) {
+        colorCode1 += colorStr[Math.floor(Math.random() * colorStr.length)];
+        colorCode2 += colorStr[Math.floor(Math.random() * colorStr.length)];
+      }
+      let color = `linear-gradient(${direction}deg, ${colorCode1},${colorCode2})`;      
+      return color;
+    }
+
+    generateBtn.addEventListener('click',()=>{
+      let bgColor = generateColor();
+      box.style.backgroundImage = bgColor;
+      getElement('pre').innerText = `background-image: ${bgColor};`
+    })
+
+    copyBtn.addEventListener('click',()=>{
+      let text =  getElement('pre').innerText;
+      navigator.clipboard.writeText(text).then(e=>alert("copy color code successfully")).catch((err)=>alert("color color not copied because - " + err))
+    })
+
+  </script>
+</body>
+</html>

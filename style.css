@@ -1,0 +1,34 @@
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+   box-sizing: border-box; 
+}
+body{
+  overflow: hidden;
+  background: #000;
+  color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+.box{
+  width: 300px;
+  height: 300px;
+  border: 1px solid grey;
+  transition: .3s;
+}
+.transition{
+  border-radius: 50%;
+}
+.transition2{
+  translate: -100% 0px;
+}
+.transition3{
+  translate: 100% 0px;
+}
+.transition4{
+  translate: 0% 0px;
+}

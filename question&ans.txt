@@ -1,0 +1,174 @@
+🟠 1. What is the difference between null and undefined?
+🟢 Answer:
+
+undefined means the value is not set yet.
+null means the value is set to be empty on purpose.
+
+🟠 2. What is the purpose of the typeof operator?
+🟢 Answer:
+
+The typeof operator helps me check the type of data a variable has — like "string", "number", "undefined", etc.
+
+🟠 3. What is the result of typeof null in JavaScript?
+🟢 Answer:
+
+typeof null returns "object" —
+but this is a known mistake in JavaScript.
+Actually, null means an empty value, not an object.
+
+🟠 4. What are the primitive data types in JavaScript?
+🟢 Answer:
+JavaScript has 7 primitive data types. These are the basic types of data that are not objects and store only single values.
+
+📋 List of Primitive Data Types:
+
+🔢 Type	        Example	              Description
+
+1️⃣	String	      "hello"	            Used for text
+2️⃣	Number	      42, 3.14	            Used for numbers (integers, decimals)
+3️⃣	Boolean	      true, false	        True or False (yes/no) values
+4️⃣	Undefined     let x;	            No value assigned yet
+5️⃣	Null	      let y = null;	        Value is empty on purpose
+6️⃣	Symbol	      Symbol("id")	        Unique and cannot be changed
+7️⃣	BigInt	      1234567890123456789n	Very large numbers
+
+🟠 5. How to convert a string to a number in JavaScript?
+
+🟢 I can convert a string to a number using Number(), parseInt(), parseFloat(), or a plus sign (+). These methods help me change data types safely.
+
+⚠️ Note:
+If the string is not a valid number, it will return NaN (Not a Number).
+
+Example: Number("abc") → NaN
+
+🟠 6. How to convert a number to a string in JavaScript?
+🟢 Answer:
+I can convert a number to a string using String(), .toString(), or template literals like `${123}`.
+
+🟠 7. Explain Truthy and Falsy Values in JavaScript
+🟢 Answer:
+In JavaScript, values are either "truthy" or "falsy" when used in a Boolean (true/false) context, like in an if statement.
+In JavaScript, values can act as true or false. Falsy values are few and fixed (like 0, null, undefined, etc.), everything else is truthy.+
+
+🟠 8. What is the purpose of NaN in JavaScript?
+🟢 Answer:
+NaN means the result is not a valid number. It usually comes from bad math or wrong conversions. It’s still a number type, but not usable in normal math.
+
+🟠 9. Why does NaN === NaN return false in JavaScript?
+🟢 Answer:
+- Because in JavaScript, NaN is not equal to anything, even itself.
+- NaN === NaN is false because NaN is not equal to anything — not even itself. Use Number.isNaN() to check safely.
+
+🟠 10. Why does "5" - 5 give 0 in JavaScript?
+🟢 Answer:
+JavaScript changes "5" to a number when using -, *, or /. But with +, it may treat it as a string and do concatenation instead.
+
+🟠 11. Why does 'sujoy' - 'ghosal' return NaN in JavaScript?
+🟢 Answer:
+If you use - with non-numeric strings, JavaScript can't do the math — so it returns NaN, meaning "Not a Number".
+
+🟠 12. Why is 0.2 + 0.1 = 0.30000000000000004 in JavaScript?
+🟢 Answer:
+JavaScript uses a system called floating-point math to handle numbers. But some numbers like 0.1 and 0.2 cannot be stored exactly in memory.
+
+So, when we do 0.2 + 0.1, the result is a little more than 0.3, like 0.30000000000000004.
+
+This is not a bug, it happens because of how computers work with decimal numbers.
+
+🟠 13. Difference between == and === in JavaScript?
+🟢 Answer:
+== compares value only (does type conversion).
+=== compares value and type (no type conversion).
+✅ Use === for more accurate and safe comparisons.
+
+🟠 14. Why does console.log(2 < 12 < 5) return true in JavaScript?
+🟢 Answer:
+JavaScript evaluates left to right:
+
+2 < 12 → true
+true < 5 → 1 < 5 (because true becomes 1)
+1 < 5 → true
+
+✅ So, the final result is true.
+
+
+🟠 15. What is the output of console.log("20" + 20 + 20) and why?
+🟢 Answer:
+JavaScript joins (concatenates) strings and numbers from left to right:
+
+"20" + 20 → "2020"
+
+"2020" + 20 → "202020"
+
+✅ Final output is "202020" (a string).  
+
+🟠 16. How to check if a number is even or odd in JavaScript (var num = "6")?
+
+🟢 Answer:
+Use the modulus % operator. JavaScript converts the string "6" to a number automatically.
+var num = "6";
+if (num % 2 === 0) {
+  console.log("Even");
+} else {
+  console.log("Odd");
+}
+✅ Output: "Even"
+✅ Works even if num is a string like "6" because of type coercion.
+
+
+🟠 17. Write a program to check if a number is positive, negative, or zero in JavaScript
+🟢 Answer:
+
+let num = -5;
+
+if (num > 0) {
+  console.log("Positive");
+} else if (num < 0) {
+  console.log("Negative");
+} else {
+  console.log("Zero");
+}
+
+🟠 18. What is the difference between var, let, and const in JavaScript?
+🟢 Answer:
+
+Scope	         Function-scoped	                 Block-scoped	                Block-scoped
+
+Hoisting    	 Yes (initialized as undefined)	 Yes (but not initialized)	    Yes (but not initialized)
+Reassignment   ✅ Allowed	                     Allowed                      ❌ Not allowed
+Redeclaration	 ✅ Allowed	                     ❌ Not allowed in same scope ❌ Not allowed in same scope
+Best Use Case  For legacy code	                For changeable variables	     For constants
+
+🟠 19. What is the difference between forEach and map in JavaScript?
+🟢 Answer:
+| Feature                   | `forEach`                                           | `map`                                      |
+| ------------------------- | --------------------------------------------------  | ------------------------------------------ |
+| **Purpose**               | To loop through array items                         | To create a **new array**                  |
+| **Return Value**          | ❌ Does **not** return anything useful              | ✅ Returns a **new array**                  |
+| **Change Original Array** | ❌ Doesn’t change original array                    | ❌ Doesn’t change original array            |
+| **Common Use**            | Just doing something with each item (like logging)  | Transforming array values into a new array |
+
+forEach is used when you want to do something with each item, like print it or update the UI.
+
+map is used when you want to create a new array by changing each item, like doubling numbers or formatting strings.
+
+🟠 20. What is the return value of the push() method in JavaScript?
+🟢 Answer:
+🔢 Returns the new length of the array after the elements are added
+
+🟠 21. What is the return value of the pop() method in JavaScript?
+🟢 Answer:
+🔙 Returns the removed element
+
+🟠 22. What is the return value of the splice() method in JavaScript?
+🟢 Answer:
+🔙 Returns an array of the removed elements.
+If no elements are removed, it returns an empty array [].
+
+🟠 23. How to use the compare method in descending order?
+🟢 Answer:
+To sort an array in descending order using the compare function with sort(), reverse the usual comparison:
+
+array.sort(function(a, b) {
+  return b - a;
+});
